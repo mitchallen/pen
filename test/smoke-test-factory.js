@@ -147,4 +147,40 @@ describe('module factory smoke test', () => {
         el1.y.should.eql(py);
         done();
     });
+
+    it('xMin should equal minimum goto x position', done => {
+        var pen = _factory.create({});
+        pen.penDown();
+        let px = -15, py = -25;
+        pen.goto( { x: px, y: py } );
+        pen.xMin().should.eql(px);
+        done();
+    });
+
+    it('yMin should equal minimum goto y position', done => {
+        var pen = _factory.create({});
+        pen.penDown();
+        let px = -15, py = -25;
+        pen.goto( { x: px, y: py } );
+        pen.yMin().should.eql(py);
+        done();
+    });
+
+    it('xMax should equal maximum goto x position', done => {
+        var pen = _factory.create({});
+        pen.penDown();
+        let px = 15, py = 25;
+        pen.goto( { x: px, y: py } );
+        pen.xMax().should.eql(px);
+        done();
+    });
+
+    it('yMax should equal maximum goto y position', done => {
+        var pen = _factory.create({});
+        pen.penDown();
+        let px = 15, py = 25;
+        pen.goto( { x: px, y: py } );
+        pen.yMax().should.eql(py);
+        done();
+    });
 });

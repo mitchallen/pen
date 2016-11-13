@@ -20,7 +20,11 @@ module.exports.create = (spec) => {
     let _alpha = spec.alpha || 1.0;
 
     var _penDown = false,
-        _path = [];
+        _path = [],
+        _xMin = 0, 
+        _yMin = 0,
+        _xMax = 0,
+        _yMax = 0;
 
     return {
         // public 
@@ -36,6 +40,11 @@ module.exports.create = (spec) => {
         penUp: () => _penDown = false,
         isPenDown: () => _penDown,
 
+        xMin: () => _xMin,
+        yMin: () => _yMin,
+        xMax: () => _xMax,
+        yMax: () => _yMax,
+
         goto: (point) => {
             if(!point) {
                 return null;
@@ -47,7 +56,7 @@ module.exports.create = (spec) => {
 
             var op = _penDown ? "L" : "M";
 
-            if(_path.length == 0 && op != "M" ) {
+            if(_path.length === 0 && op != "M" ) {
                 if(_verbose) {
                     // Insert starting point
                     console.warn("pen.goto inserting default MoveTo starting point");
@@ -56,6 +65,11 @@ module.exports.create = (spec) => {
             }
 
             _path.push( { op: op, x: point.x, y: point.y } ); 
+
+            _xMin = point.x < _xMin ? point.x : _xMin;
+            _yMin = point.y < _yMin ? point.y : _yMin;
+            _xMax = point.x > _xMax ? point.x : _xMax;
+            _yMax = point.y > _yMax ? point.y : _yMax;
         }
     };
 };
