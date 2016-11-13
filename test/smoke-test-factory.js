@@ -135,10 +135,12 @@ describe('module factory smoke test', () => {
         let path = pen.path();
         // console.log(path);
         path.length.should.eql(2,"path should contain 2 operations");
+        // Verify op[0]
         let el0 = path[0];
         el0.op.should.eql("M");
         el0.x.should.eql(0);
         el0.y.should.eql(0);
+        // Verify op[1]
         let el1 = path[1];
         el1.op.should.eql("L");
         el1.x.should.eql(px);
