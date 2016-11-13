@@ -42,21 +42,59 @@ describe('module factory smoke test', () => {
     })
 
     it('create method with no spec should return null', done => {
-        var obj = _factory.create();
-        should.not.exist(obj);
+        var pen = _factory.create();
+        should.not.exist(pen);
         done();
     });
 
-    it('create method with spec should return object', done => {
-        var obj = _factory.create({});
-        should.exist(obj);
+    it('create method with spec should return pen', done => {
+        var pen = _factory.create({});
+        should.exist(pen);
         done();
     });
 
     it('health method should return ok', done => {
-        var obj = _factory.create({});
-        should.exist(obj);
-        obj.health().should.eql("OK");
+        var pen = _factory.create({});
+        should.exist(pen);
+        pen.health().should.eql("OK");
+        done();
+    });
+
+    it('default pen color should be black (0x000000)', done => {
+        var pen = _factory.create({});
+        pen.color().should.eql(0x000000);
+        done();
+    });
+
+    it('default pen width should be one (1)', done => {
+        var pen = _factory.create({});
+        pen.width().should.eql(1);
+        done();
+    });
+
+    it('default pen alpha should be one (1.0)', done => {
+        var pen = _factory.create({});
+        pen.alpha().should.eql(1.0);
+        done();
+    });
+
+    it('default isPenDown should be false', done => {
+        var pen = _factory.create({});
+        pen.isPenDown().should.eql(false);
+        done();
+    });
+
+    it('isPenDown should be true after penDown', done => {
+        var pen = _factory.create({});
+        pen.penDown();
+        pen.isPenDown().should.eql(true);
+        done();
+    });
+
+    it('isPenDown should be false after penUp', done => {
+        var pen = _factory.create({});
+        pen.penUp();
+        pen.isPenDown().should.eql(false);
         done();
     });
 });
