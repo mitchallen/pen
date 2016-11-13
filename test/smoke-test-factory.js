@@ -78,23 +78,23 @@ describe('module factory smoke test', () => {
         done();
     });
 
-    it('default isPenDown should be false', done => {
+    it('default isDown should be false', done => {
         var pen = _factory.create({});
-        pen.isPenDown().should.eql(false);
+        pen.isDown().should.eql(false);
         done();
     });
 
-    it('isPenDown should be true after penDown', done => {
+    it('isDown should be true after down', done => {
         var pen = _factory.create({});
-        pen.penDown();
-        pen.isPenDown().should.eql(true);
+        pen.down();
+        pen.isDown().should.eql(true);
         done();
     });
 
-    it('isPenDown should be false after penUp', done => {
+    it('isDown should be false after up', done => {
         var pen = _factory.create({});
-        pen.penUp();
-        pen.isPenDown().should.eql(false);
+        pen.up();
+        pen.isDown().should.eql(false);
         done();
     });
 
@@ -115,7 +115,7 @@ describe('module factory smoke test', () => {
         var pen = _factory.create({});
         let x1 = 10, y1 = 20;
         pen.goto( { x: x1, y: y1 } );
-        pen.penDown();
+        pen.down();
         let x2 = 30, y2 = 40;
         pen.goto( { x: x2, y: y2 } );
         let path = pen.path();
@@ -129,7 +129,7 @@ describe('module factory smoke test', () => {
 
     it('goto while pen down and path empty should inser MoveTo (M) op', done => {
         var pen = _factory.create({});
-        pen.penDown();
+        pen.down();
         let px = 15, py = 25;
         pen.goto( { x: px, y: py } );
         let path = pen.path();
@@ -150,7 +150,7 @@ describe('module factory smoke test', () => {
 
     it('xMin should equal minimum goto x position', done => {
         var pen = _factory.create({});
-        pen.penDown();
+        pen.down();
         let px = -15, py = -25;
         pen.goto( { x: px, y: py } );
         pen.xMin().should.eql(px);
@@ -159,7 +159,7 @@ describe('module factory smoke test', () => {
 
     it('yMin should equal minimum goto y position', done => {
         var pen = _factory.create({});
-        pen.penDown();
+        pen.down();
         let px = -15, py = -25;
         pen.goto( { x: px, y: py } );
         pen.yMin().should.eql(py);
@@ -168,7 +168,7 @@ describe('module factory smoke test', () => {
 
     it('xMax should equal maximum goto x position', done => {
         var pen = _factory.create({});
-        pen.penDown();
+        pen.down();
         let px = 15, py = 25;
         pen.goto( { x: px, y: py } );
         pen.xMax().should.eql(px);
@@ -177,7 +177,7 @@ describe('module factory smoke test', () => {
 
     it('yMax should equal maximum goto y position', done => {
         var pen = _factory.create({});
-        pen.penDown();
+        pen.down();
         let px = 15, py = 25;
         pen.goto( { x: px, y: py } );
         pen.yMax().should.eql(py);

@@ -19,7 +19,7 @@ module.exports.create = (spec) => {
     let _width = spec.width || 1;
     let _alpha = spec.alpha || 1.0;
 
-    var _penDown = false,
+    var _down = false,
         _path = [],
         _xMin = 0, 
         _yMin = 0,
@@ -36,9 +36,9 @@ module.exports.create = (spec) => {
         alpha: () => _alpha,
         path: () => _path,
 
-        penDown: () => _penDown = true,
-        penUp: () => _penDown = false,
-        isPenDown: () => _penDown,
+        down: () => _down = true,
+        up: () => _down = false,
+        isDown: () => _down,
 
         xMin: () => _xMin,
         yMin: () => _yMin,
@@ -46,21 +46,19 @@ module.exports.create = (spec) => {
         yMax: () => _yMax,
 
         goto: (point) => {
+            
             if(!point) {
                 return null;
             }
+
             if(!point.x || !point.y) {
-                console.error("pen.goto: point must contain x and y values");
                 return null;
             }
 
-            var op = _penDown ? "L" : "M";
+            var op = _down ? "L" : "M";
 
             if(_path.length === 0 && op != "M" ) {
-                if(_verbose) {
-                    // Insert starting point
-                    console.warn("pen.goto inserting default MoveTo starting point");
-                }
+                // Insert starting point
                 _path.push( { op: "M", x: 0, y: 0 } );
             }
 
