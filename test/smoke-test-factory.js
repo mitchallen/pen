@@ -111,12 +111,70 @@ describe('module factory smoke test', () => {
         done();
     });
 
+    it('goto while pen up with zero x should set path MoveTo (M) op', done => {
+        var pen = _factory.create({});
+        let px = 0, py = 20;
+        pen.goto( { x: px, y: py } );
+        let path = pen.path();
+        // console.log(path);
+        let el = path[0];
+        el.op.should.eql("M");
+        el.x.should.eql(px);
+        el.y.should.eql(py);
+        done();
+    });
+
+    it('goto while pen up with zero y should set path MoveTo (M) op', done => {
+        var pen = _factory.create({});
+        let px = 10, py = 0;
+        pen.goto( { x: px, y: py } );
+        let path = pen.path();
+        // console.log(path);
+        let el = path[0];
+        el.op.should.eql("M");
+        el.x.should.eql(px);
+        el.y.should.eql(py);
+        done();
+    });
+
     it('goto while pen down should set path LineTo (L) op', done => {
         var pen = _factory.create({});
         let x1 = 10, y1 = 20;
         pen.goto( { x: x1, y: y1 } );
         pen.down();
         let x2 = 30, y2 = 40;
+        pen.goto( { x: x2, y: y2 } );
+        let path = pen.path();
+        // console.log(path);
+        let el = path[1];
+        el.op.should.eql("L");
+        el.x.should.eql(x2);
+        el.y.should.eql(y2);
+        done();
+    });
+
+    it('goto while pen down with zero x should set path LineTo (L) op', done => {
+        var pen = _factory.create({});
+        let x1 = 10, y1 = 20;
+        pen.goto( { x: x1, y: y1 } );
+        pen.down();
+        let x2 = 0, y2 = 40;
+        pen.goto( { x: x2, y: y2 } );
+        let path = pen.path();
+        // console.log(path);
+        let el = path[1];
+        el.op.should.eql("L");
+        el.x.should.eql(x2);
+        el.y.should.eql(y2);
+        done();
+    });
+
+    it('goto while pen down with zero y should set path LineTo (L) op', done => {
+        var pen = _factory.create({});
+        let x1 = 10, y1 = 20;
+        pen.goto( { x: x1, y: y1 } );
+        pen.down();
+        let x2 = 30, y2 = 0;
         pen.goto( { x: x2, y: y2 } );
         let path = pen.path();
         // console.log(path);

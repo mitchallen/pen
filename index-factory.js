@@ -51,7 +51,7 @@ module.exports.create = (spec) => {
                 return null;
             }
 
-            if(!point.x || !point.y) {
+            if( point.x === null || point.y === null) {
                 return null;
             }
 

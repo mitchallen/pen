@@ -176,6 +176,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.1.2 
+
+* fixed bug where goto returned null if x or y was zero
+
 #### Version 0.1.1 
 
 * updated description in package.json
