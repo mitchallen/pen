@@ -1,7 +1,7 @@
 
 @mitchallen/pen
 ==
-pen object that returns drawing path information.
+pen object that returns drawing path information
 --
 * * *
 ## Installation
@@ -175,6 +175,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.1 
+
+* updated description in package.json
 
 #### Version 0.1.0 
 

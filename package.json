@@ -1,7 +1,7 @@
 {
   "name": "@mitchallen/pen",
   "version": "0.1.0",
-  "description": "",
+  "description": "pen object that returns drawing path information",
   "main": "index-factory.js",
   "scripts": {
     "//": "To use: npm start (useful if not a module)",
