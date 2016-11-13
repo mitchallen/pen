@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/pen",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "pen object that returns drawing path information",
   "main": "index-factory.js",
   "scripts": {
