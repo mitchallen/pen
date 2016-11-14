@@ -128,25 +128,25 @@ Example result:
 	
 ### pen.xMin()
 
-Returns minimum x position visited via __goto__. 
+Returns minimum x position visited via __goto__. Rounded to a whole number.
 
     var xMin = pen.xMin();
     
 ### pen.yMin()
 
-Returns minimum y position visited via __goto__. 
+Returns minimum y position visited via __goto__. Rounded to a whole number.
 
     var yMin = pen.yMin();
     
 ### pen.xMax()
 
-Returns maximum x position visited via __goto__. 
+Returns maximum x position visited via __goto__. Rounded to a whole number.
 
     var xMax = pen.xMax();
     
 ### pen.yMax()
 
-Returns maximum y position visited via __goto__. 
+Returns maximum y position visited via __goto__. Rounded to a whole number.
 
     var yMax = pen.yMax();
   
@@ -175,6 +175,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.3 
+
+* min / max values now rounded and compared to whole numbers
 
 #### Version 0.1.2 
 

@@ -60,14 +60,26 @@ module.exports.create = (spec) => {
             if(_path.length === 0 && op != "M" ) {
                 // Insert starting point
                 _path.push( { op: "M", x: 0, y: 0 } );
+                _xMin = _xMax = _yMin = _yMax = 0;
             }
 
             _path.push( { op: op, x: point.x, y: point.y } ); 
 
-            _xMin = point.x < _xMin ? point.x : _xMin;
-            _yMin = point.y < _yMin ? point.y : _yMin;
-            _xMax = point.x > _xMax ? point.x : _xMax;
-            _yMax = point.y > _yMax ? point.y : _yMax;
+            var px = Math.round(point.x)
+            var py = Math.round(point.y)
+
+            if( _path.length === 1 ) {
+
+                _xMin = _xMax = px;
+                _yMin = _yMax = py;
+
+            } else {
+                _xMin = px < _xMin ? px : _xMin;
+                _yMin = py < _yMin ? py : _yMin;
+                _xMax = px > _xMax ? px : _xMax;
+                _yMax = py > _yMax ? py : _yMax;
+            }
+
         }
     };
 };
