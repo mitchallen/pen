@@ -65,8 +65,8 @@ module.exports.create = (spec) => {
 
             _path.push( { op: op, x: point.x, y: point.y } ); 
 
-            var px = Math.round(point.x)
-            var py = Math.round(point.y)
+            var px = Math.round(point.x);
+            var py = Math.round(point.y);
 
             if( _path.length === 1 ) {
 
