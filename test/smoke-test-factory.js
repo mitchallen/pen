@@ -207,38 +207,75 @@ describe('module factory smoke test', () => {
     });
 
     it('xMin should equal minimum goto x position', done => {
+
         var pen = _factory.create({});
-        pen.down();
-        let px = -15.00, py = -25.00;
-        pen.goto( { x: px, y: py } );
-        pen.xMin().should.eql(px);
+        var pt = [
+            { x: 15.00, y: 25 },
+            { x:  5.00, y: 30 },
+        ];
+        for( var i = 0; i < pt.length; i++ ) {
+            var p = pt[i];
+            if( i == 1 ) {
+                pen.down();
+            }
+            pen.goto( { x: p.x, y: p.y } );
+        }
+        var vp = pen.viewPort();
+        vp.xMin.should.eql(pt[1].x);
         done();
     });
 
     it('yMin should equal minimum goto y position', done => {
         var pen = _factory.create({});
-        pen.down();
-        let px = -15.00, py = -25.00;
-        pen.goto( { x: px, y: py } );
-        pen.yMin().should.eql(py);
+        var pt = [
+            { x: 15.00, y: 25 },
+            { x:  5.00, y: 30 },
+        ];
+        for( var i = 0; i < pt.length; i++ ) {
+            var p = pt[i];
+            if( i == 1 ) {
+                pen.down();
+            }
+            pen.goto( { x: p.x, y: p.y } );
+        }
+        var vp = pen.viewPort();
+        vp.yMin.should.eql(pt[0].y);
         done();
     });
 
     it('xMax should equal maximum goto x position', done => {
         var pen = _factory.create({});
-        pen.down();
-        let px = 15.00, py = 25.00;
-        pen.goto( { x: px, y: py } );
-        pen.xMax().should.eql(px);
+        var pt = [
+            { x: 15.00, y: 25 },
+            { x:  5.00, y: 30 },
+        ];
+        for( var i = 0; i < pt.length; i++ ) {
+            var p = pt[i];
+            if( i == 1 ) {
+                pen.down();
+            }
+            pen.goto( { x: p.x, y: p.y } );
+        }
+        var vp = pen.viewPort();
+        vp.xMax.should.eql(pt[0].x);
         done();
     });
 
     it('yMax should equal maximum goto y position', done => {
         var pen = _factory.create({});
-        pen.down();
-        let px = 15, py = 25;
-        pen.goto( { x: px, y: py } );
-        pen.yMax().should.eql(py);
+        var pt = [
+            { x: 15.00, y: 25 },
+            { x:  5.00, y: 30 },
+        ];
+        for( var i = 0; i < pt.length; i++ ) {
+            var p = pt[i];
+            if( i == 1 ) {
+                pen.down();
+            }
+            pen.goto( { x: p.x, y: p.y } );
+        }
+        var vp = pen.viewPort();
+        vp.yMax.should.eql(pt[1].y);
         done();
     });
 });

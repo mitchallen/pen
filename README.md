@@ -126,29 +126,19 @@ Example result:
 
 	[ { op: "M", x: 10, y: 20 }, { op: "L", x: 20, y: 30 } ]
 	
-### pen.xMin()
+### pen.viewPort()
 
-Returns minimum x position visited via __goto__. Rounded to a whole number.
+Loops through the path values and returns an object containing the following properties:
 
-    var xMin = pen.xMin();
-    
-### pen.yMin()
+* __xMin__ - Returns minimum x position visited via __goto__. Rounded to a whole number.
+* __yMin__ - Returns minimum y position visited via __goto__. Rounded to a whole number.
+* __xMax__ - Returns maximum x position visited via __goto__. Rounded to a whole number.
+* __yMax__ - Returns maximum y position visited via __goto__. Rounded to a whole number.
 
-Returns minimum y position visited via __goto__. Rounded to a whole number.
+Example:
 
-    var yMin = pen.yMin();
-    
-### pen.xMax()
-
-Returns maximum x position visited via __goto__. Rounded to a whole number.
-
-    var xMax = pen.xMax();
-    
-### pen.yMax()
-
-Returns maximum y position visited via __goto__. Rounded to a whole number.
-
-    var yMax = pen.yMax();
+	var vp = pen.viewPort();
+	console.log( "xMin: ", vp.xMin );
   
 * * *
 
@@ -175,6 +165,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.0
+
+* min / max methods replaced with viewPort method 
 
 #### Version 0.1.3 
 
