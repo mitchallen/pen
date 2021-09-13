@@ -57,16 +57,12 @@ module.exports.create = (spec) => {
                 vp.yMin = vp.yMax = _path[0].y;
 
                 _path.forEach( op => {
-
                     let px = Math.round(op.x);
                     let py = Math.round(op.y);
-
                     vp.xMin = Math.min(px, vp.xMin);
                     vp.yMin = Math.min(py, vp.yMin);
-
                     vp.xMax = Math.max(px, vp.xMax);
                     vp.yMax = Math.max(py, vp.yMax);
-
                 });
             }
 

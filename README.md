@@ -186,6 +186,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.2.3
+
+* code cleanup
+
 #### Version 0.2.2
 
 * package dependency cleanup
