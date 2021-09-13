@@ -16,7 +16,7 @@
     "url": "https://github.com/mitchallen/pen.git"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@mitchallen/factory-base": "0.1.0"
   },
