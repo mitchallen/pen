@@ -3,6 +3,27 @@
 ==
 pen object that returns drawing path information
 --
+
+<p align="left">
+
+  <a href="https://travis-ci.org/mitchallen/pen">
+    <img src="https://img.shields.io/travis/mitchallen/pen.svg?style=flat-square" alt="Version">
+  </a>
+  
+  <a href="https://codecov.io/gh/mitchallen/pen">
+    <img src="https://codecov.io/gh/mitchallen/pen/branch/master/graph/badge.svg" alt="Coverage Status">
+  </a>
+  
+  <a href="https://npmjs.org/package/@mitchallen/pen">
+    <img src="http://img.shields.io/npm/v/@mitchallen/pen.svg?style=flat-square" alt="Version">
+  </a>
+  
+  <a href="https://npmjs.org/package/@mitchallen/pen">
+    <img src="https://img.shields.io/github/license/mitchallen/pen.svg">
+  </a>
+  
+</p>
+
 * * *
 ## Installation
 
