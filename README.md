@@ -11,7 +11,7 @@ pen object that returns drawing path information
   </a>
   
   <a href="https://npmjs.org/package/@mitchallen/pen">
-    <img src="https://img.shields.io/github/license/mitchallen/pen.svg">
+    <img src="https://img.shields.io/github/license/mitchallen/pen.svg" alt="License">
   </a>
   
 </p>
