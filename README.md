@@ -175,6 +175,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.2.1
 
+* package dependency cleanup
+
+#### Version 0.2.1
+
 * added fill for fill color which defaults to null (aka none) 
 
 #### Version 0.2.0
