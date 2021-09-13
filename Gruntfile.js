@@ -30,12 +30,10 @@ module.exports = function (grunt) {
 
         bump: {
             options: {
-
                 commit: true,
                 createTag: true,
                 push: true,
                 pushTo: 'origin',
-
                 updateConfigs: ['pkg'],
                 commitFiles: ['package.json']
             }

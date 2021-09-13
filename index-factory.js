@@ -16,10 +16,11 @@ module.exports.create = (spec) => {
     let _verbose = spec.verbose || false;
     // some pen properties can't be changed once set
     let _color = spec.color || 0x000000;
+    let _fill = spec.fill || null;
     let _width = spec.width || 1;
     let _alpha = spec.alpha || 1.0;
 
-    var _down = false,
+    let _down = false,
         _path = [],
         _xMin = 0, 
         _yMin = 0,
@@ -32,6 +33,7 @@ module.exports.create = (spec) => {
         health: () => "OK",
 
         color: () => _color,
+        fill: () => _fill,
         width: () => _width,
         alpha: () => _alpha,
         path: () => _path,

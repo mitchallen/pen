@@ -21,6 +21,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
 	var pen = penFactory.create({ 
 		color: 0xFF0000,	// red pen
+		fill: 0x00FF00,		// green fill
 		width: 2,			// pen width 
 		alpha: 0.8			// pen alpha value
 	});
@@ -103,6 +104,12 @@ Maps path drawing operation. If the pen is up it generates a MoveTo. If the pen 
 Return RGB value of pen, either default or what was passed to __create__ method. 
 
     var color = pen.color();
+
+### pen.fill()
+
+Return RGB value of fill color, either default or what was passed to __create__ method. 
+
+    var fill = pen.fill();
     
 ### pen.width()
 
@@ -165,6 +172,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.1
+
+* added fill for fill color which defaults to null (aka none) 
 
 #### Version 0.2.0
 

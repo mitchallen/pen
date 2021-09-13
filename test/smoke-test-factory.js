@@ -66,6 +66,30 @@ describe('module factory smoke test', () => {
         done();
     });
 
+    it('should be able to set pen color', done => {
+        let TEST_COLOR = 0x00FF00;
+        var pen = _factory.create({
+            color: TEST_COLOR,
+        });
+        should.equal(pen.color(),TEST_COLOR);
+        done();
+    });
+
+    it('default pen fill should be null', done => {
+        var pen = _factory.create({});
+        should.equal(pen.fill(),null);
+        done();
+    });
+
+    it('should be able to set pen fill', done => {
+        let TEST_FILL = 0x00FF00;
+        var pen = _factory.create({
+            fill: TEST_FILL,
+        });
+        should.equal(pen.fill(),TEST_FILL);
+        done();
+    });
+
     it('default pen width should be one (1)', done => {
         var pen = _factory.create({});
         pen.width().should.eql(1);
