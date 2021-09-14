@@ -186,6 +186,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Versoin 0.2.4
+
+* fill can now handle 0x000000
+
 #### Version 0.2.3
 
 * code cleanup

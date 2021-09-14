@@ -16,7 +16,7 @@ module.exports.create = (spec) => {
     let _verbose = spec.verbose || false;
     // some pen properties can't be changed once set
     let _color = spec.color || 0x000000;
-    let _fill = spec.fill || null;
+    let _fill = spec.fill === undefined ? undefined : spec.fill;
     let _width = spec.width || 1;
     let _alpha = spec.alpha || 1.0;
 

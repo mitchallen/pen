@@ -75,14 +75,23 @@ describe('module factory smoke test', () => {
         done();
     });
 
-    it('default pen fill should be null', done => {
+    it('default pen fill should be undefined', done => {
         var pen = _factory.create({});
-        should.equal(pen.fill(),null);
+        should.equal(pen.fill(),undefined);
         done();
     });
 
     it('should be able to set pen fill', done => {
         let TEST_FILL = 0x00FF00;
+        var pen = _factory.create({
+            fill: TEST_FILL,
+        });
+        should.equal(pen.fill(),TEST_FILL);
+        done();
+    });
+
+    it('should be able to set pen fill to 0x00000', done => {
+        let TEST_FILL = 0x000000;
         var pen = _factory.create({
             fill: TEST_FILL,
         });
