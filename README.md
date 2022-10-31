@@ -39,15 +39,15 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 		alpha: 0.8			// pen alpha value
 	});
 	
-	pen.up();
-	pen.goto( { x: 50, y: 50 } );	// MoveTo 50, 50
-	pen.down();
-	pen.goto( { x: 10, y: 20 } );	// LineTo 10, 20
-	pen.goto( { x: 15, y: 30 } );	// LineTo 15, 30
-	pen.goto( { x: 45, y: 60 } );	// LineTo 45, 60
-	pen.up();
-	pen.goto( { x: 30, y: 40 } );	// MoveTo 30, 40
-	pen.goto( { x: 10, y: 20 } );	// LineTo 10, 20
+	pen.up()
+	   .goto( { x: 50, y: 50 } )	// MoveTo 50, 50
+	   .down()
+	   .goto( { x: 10, y: 20 } )	// LineTo 10, 20
+	   .goto( { x: 15, y: 30 } )	// LineTo 15, 30
+	   .goto( { x: 45, y: 60 } )	// LineTo 45, 60
+	   .up()
+	   .goto( { x: 30, y: 40 } )	// MoveTo 30, 40
+	   .goto( { x: 10, y: 20 } )	// LineTo 10, 20
 	
 	var path = pen.path();
 	
@@ -106,11 +106,11 @@ Returns if pen is down.
 
 Maps path drawing operation. If the pen is up it generates a MoveTo. If the pen is down it generatea a LineTo. If this is the first operation it inserts a MoveTo (0,0). 
 
-	pen.up();
-	pen.goto( { x: 50, y: 50 } );	// MoveTo 50, 50
-	pen.down();
-	pen.goto( { x: 10, y: 20 } );	// LineTo 10, 20
-	pen.goto( { x: 15, y: 30 } );	// LineTo 15, 30
+	pen.up()
+	   .goto( { x: 50, y: 50 } )	// MoveTo 50, 50
+	   .down()
+	   .goto( { x: 10, y: 20 } )	// LineTo 10, 20
+	   .goto( { x: 15, y: 30 } )	// LineTo 15, 30
 	
 ### pen.color()
 
@@ -185,6 +185,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Versoin 0.2.5
+
+* up, down and goto now support chaining
 
 #### Versoin 0.2.4
 

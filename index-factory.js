@@ -37,10 +37,17 @@ module.exports.create = (spec) => {
         width: () => _width,
         alpha: () => _alpha,
         path: () => _path,
-
-        down: () => _down = true,
-        up: () => _down = false,
         isDown: () => _down,
+
+        down: function() { 
+            _down = true;
+            return this;
+        },
+
+        up: function() { 
+            _down = false;
+            return this;
+        },
 
         viewPort: function() {
 
@@ -69,14 +76,14 @@ module.exports.create = (spec) => {
             return vp;
         },
 
-        goto: (point) => {
+        goto: function(point) {
             
             if(!point) {
-                return null;
+                return this;
             }
 
             if( point.x === null || point.y === null) {
-                return null;
+                return this;
             }
 
             var op = _down ? "L" : "M";
@@ -87,6 +94,8 @@ module.exports.create = (spec) => {
             }
 
             _path.push( { op: op, x: point.x, y: point.y } ); 
+
+            return this;
         }
     };
 };
