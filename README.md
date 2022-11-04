@@ -11,7 +11,7 @@ pen object that returns drawing path information
   </a>
   
   <a href="https://npmjs.org/package/@mitchallen/pen">
-    <img src="https://img.shields.io/github/license/mitchallen/pen.svg" alt="License">
+	<img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
   
 </p>
@@ -28,6 +28,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
 ## Usage
 
+```js
     "use strict";
     
 	var penFactory = require("@mitchallen/pen");
@@ -50,6 +51,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 	   .goto( { x: 10, y: 20 } )	// LineTo 10, 20
 	
 	var path = pen.path();
+```
 	
 * * * 
 
@@ -185,6 +187,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Versoin 0.2.6
+
+* README and LICENSE year update
 
 #### Versoin 0.2.5
 
