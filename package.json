@@ -4,12 +4,8 @@
   "description": "pen object that returns drawing path information",
   "main": "index-factory.js",
   "scripts": {
-    "//": "To use: npm run test-nodemon (assumes global location of mocha)",
     "start": "node index.js",
-    "test": "mocha --recursive --timeout 20000",
-    "test-nodemon": "nodemon /usr/local/bin/mocha --timeout 5000",
-    "test-debug": "nodemon /usr/local/bin/mocha -g '@DEBUG' --recursive --timeout 20000",
-    "test-jenkins": "mocha --recursive --timeout 20000 -R xunit test/ > test-reports.xml"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -19,9 +15,5 @@
   "license": "MIT",
   "dependencies": {
     "@mitchallen/factory-base": "0.1.1"
-  },
-  "devDependencies": {
-    "mocha": "^11.7.6",
-    "should": "^13.2.3"
   }
 }

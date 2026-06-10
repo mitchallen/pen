@@ -6,118 +6,105 @@
 
 "use strict";
 
-var should = require('should'),
-    modulePath = "../index-factory";
+const { describe, it, before, after, beforeEach, afterEach } = require('node:test');
+const assert = require('node:assert/strict');
+
+const modulePath = "../index-factory";
 
 describe('module factory smoke test', () => {
 
     var _factory = null;
 
-    before(done => {
+    before(() => {
         // Call before all tests
         delete require.cache[require.resolve(modulePath)];
         _factory = require(modulePath);
-        done();
     });
 
-    after(done => {
+    after(() => {
         // Call after all tests
-        done();
     });
 
-    beforeEach(done => {
+    beforeEach(() => {
         // Call before each test
-        done();
     });
 
-    afterEach(done => {
-        // Call after eeach test
-        done();
+    afterEach(() => {
+        // Call after each test
     });
 
-    it('module should exist', done => {
-        should.exist(_factory);
-        done();
-    })
+    it('module should exist', () => {
+        assert.ok(_factory);
+    });
 
-    context('create', done => {
-        it('create method with no spec should return null', done => {
+    describe('create', () => {
+        it('create method with no spec should return null', () => {
             var pen = _factory.create();
-            should.not.exist(pen);
-            done();
+            assert.equal(pen, null);
         });
 
-        it('create method with spec should return pen', done => {
+        it('create method with spec should return pen', () => {
             var pen = _factory.create({});
-            should.exist(pen);
-            done();
+            assert.ok(pen);
         });
     });
 
-    it('health method should return ok', done => {
+    it('health method should return ok', () => {
         var pen = _factory.create({});
-        should.exist(pen);
-        pen.health().should.eql("OK");
-        done();
+        assert.ok(pen);
+        assert.equal(pen.health(), "OK");
     });
 
-    context('color', done => {
-        it('default pen color should be black (0x000000)', done => {
+    describe('color', () => {
+        it('default pen color should be black (0x000000)', () => {
             var pen = _factory.create({});
-            pen.color().should.eql(0x000000);
-            done();
+            assert.equal(pen.color(), 0x000000);
         });
 
-        it('should be able to set pen color', done => {
+        it('should be able to set pen color', () => {
             let TEST_COLOR = 0x00FF00;
             var pen = _factory.create({
                 color: TEST_COLOR,
             });
-            should.equal(pen.color(), TEST_COLOR);
-            done();
+            assert.equal(pen.color(), TEST_COLOR);
         });
     });
 
-    context('fill', done => {
-        it('default pen fill should be undefined', done => {
+    describe('fill', () => {
+        it('default pen fill should be undefined', () => {
             var pen = _factory.create({});
-            should.equal(pen.fill(), undefined);
-            done();
+            assert.equal(pen.fill(), undefined);
         });
 
-        it('should be able to set pen fill', done => {
+        it('should be able to set pen fill', () => {
             let TEST_FILL = 0x00FF00;
             var pen = _factory.create({
                 fill: TEST_FILL,
             });
-            should.equal(pen.fill(), TEST_FILL);
-            done();
+            assert.equal(pen.fill(), TEST_FILL);
         });
 
-        it('should be able to set pen fill to 0x00000', done => {
+        it('should be able to set pen fill to 0x00000', () => {
             let TEST_FILL = 0x000000;
             var pen = _factory.create({
                 fill: TEST_FILL,
             });
-            should.equal(pen.fill(), TEST_FILL);
-            done();
+            assert.equal(pen.fill(), TEST_FILL);
         });
     });
 
-    it('default pen width should be one (1)', done => {
+    it('default pen width should be one (1)', () => {
         var pen = _factory.create({});
-        pen.width().should.eql(1);
-        done();
+        assert.equal(pen.width(), 1);
     });
 
-    it('default pen alpha should be one (1.0)', done => {
+    it('default pen alpha should be one (1.0)', () => {
         var pen = _factory.create({});
-        pen.alpha().should.eql(1.0);
-        done();
+        assert.equal(pen.alpha(), 1.0);
     });
 
-    context('chaining', done => {
-        it('goto can chain', done => {
+    describe('chaining', () => {
+        it('goto can chain', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             let x2 = 30, y2 = 40;
@@ -125,78 +112,67 @@ describe('module factory smoke test', () => {
                 .down()
                 .goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
     });
 
-    context('isDown', done => {
-        it('default isDown should be false', done => {
+    describe('isDown', () => {
+        it('default isDown should be false', () => {
             var pen = _factory.create({});
-            pen.isDown().should.eql(false);
-            done();
+            assert.equal(pen.isDown(), false);
         });
 
-        it('isDown should be true after down', done => {
+        it('isDown should be true after down', () => {
             var pen = _factory.create({});
             pen.down();
-            pen.isDown().should.eql(true);
-            done();
+            assert.equal(pen.isDown(), true);
         });
 
-        it('isDown should be false after up', done => {
+        it('isDown should be false after up', () => {
             var pen = _factory.create({});
             pen.up();
-            pen.isDown().should.eql(false);
-            done();
+            assert.equal(pen.isDown(), false);
         });
     });
 
-    context('goto', done => {
-        it('goto while pen up should set path MoveTo (M) op', done => {
+    describe('goto', () => {
+        it('goto while pen up should set path MoveTo (M) op', () => {
             var pen = _factory.create({});
             let px = 10, py = 20;
             pen.goto({ x: px, y: py });
             let path = pen.path();
-            // console.log(path);
             let el = path[0];
-            el.op.should.eql("M");
-            el.x.should.eql(px);
-            el.y.should.eql(py);
-            done();
+            assert.equal(el.op, "M");
+            assert.equal(el.x, px);
+            assert.equal(el.y, py);
         });
 
-        it('goto while pen up with zero x should set path MoveTo (M) op', done => {
+        it('goto while pen up with zero x should set path MoveTo (M) op', () => {
             var pen = _factory.create({});
             let px = 0, py = 20;
             pen.goto({ x: px, y: py });
             let path = pen.path();
-            // console.log(path);
             let el = path[0];
-            el.op.should.eql("M");
-            el.x.should.eql(px);
-            el.y.should.eql(py);
-            done();
+            assert.equal(el.op, "M");
+            assert.equal(el.x, px);
+            assert.equal(el.y, py);
         });
 
-        it('goto while pen up with zero y should set path MoveTo (M) op', done => {
+        it('goto while pen up with zero y should set path MoveTo (M) op', () => {
             var pen = _factory.create({});
             let px = 10, py = 0;
             pen.goto({ x: px, y: py });
             let path = pen.path();
-            // console.log(path);
             let el = path[0];
-            el.op.should.eql("M");
-            el.x.should.eql(px);
-            el.y.should.eql(py);
-            done();
+            assert.equal(el.op, "M");
+            assert.equal(el.x, px);
+            assert.equal(el.y, py);
         });
 
-        it('goto while pen down should set path LineTo (L) op', done => {
+        it('goto while pen down should set path LineTo (L) op', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             pen.goto({ x: x1, y: y1 });
@@ -204,15 +180,13 @@ describe('module factory smoke test', () => {
             let x2 = 30, y2 = 40;
             pen.goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
 
-        it('goto while pen down with zero x should set path LineTo (L) op', done => {
+        it('goto while pen down with zero x should set path LineTo (L) op', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             pen.goto({ x: x1, y: y1 });
@@ -220,15 +194,13 @@ describe('module factory smoke test', () => {
             let x2 = 0, y2 = 40;
             pen.goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
 
-        it('goto while pen down with zero y should set path LineTo (L) op', done => {
+        it('goto while pen down with zero y should set path LineTo (L) op', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             pen.goto({ x: x1, y: y1 });
@@ -236,38 +208,33 @@ describe('module factory smoke test', () => {
             let x2 = 30, y2 = 0;
             pen.goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
 
-        it('goto while pen down and path empty should inser MoveTo (M) op', done => {
+        it('goto while pen down and path empty should inser MoveTo (M) op', () => {
             var pen = _factory.create({});
             pen.down();
             let px = 15, py = 25;
             pen.goto({ x: px, y: py });
             let path = pen.path();
-            // console.log(path);
-            path.length.should.eql(2, "path should contain 2 operations");
+            assert.equal(path.length, 2, "path should contain 2 operations");
             // Verify op[0]
             let el0 = path[0];
-            el0.op.should.eql("M");
-            el0.x.should.eql(0);
-            el0.y.should.eql(0);
+            assert.equal(el0.op, "M");
+            assert.equal(el0.x, 0);
+            assert.equal(el0.y, 0);
             // Verify op[1]
             let el1 = path[1];
-            el1.op.should.eql("L");
-            el1.x.should.eql(px);
-            el1.y.should.eql(py);
-            done();
+            assert.equal(el1.op, "L");
+            assert.equal(el1.x, px);
+            assert.equal(el1.y, py);
         });
     });
 
-    it('xMin should equal minimum goto x position', done => {
-
+    it('xMin should equal minimum goto x position', () => {
         var pen = _factory.create({});
         var pt = [
             { x: 15.00, y: 25 },
@@ -281,11 +248,10 @@ describe('module factory smoke test', () => {
             pen.goto({ x: p.x, y: p.y });
         }
         var vp = pen.viewPort();
-        vp.xMin.should.eql(pt[1].x);
-        done();
+        assert.equal(vp.xMin, pt[1].x);
     });
 
-    it('yMin should equal minimum goto y position', done => {
+    it('yMin should equal minimum goto y position', () => {
         var pen = _factory.create({});
         var pt = [
             { x: 15.00, y: 25 },
@@ -299,11 +265,10 @@ describe('module factory smoke test', () => {
             pen.goto({ x: p.x, y: p.y });
         }
         var vp = pen.viewPort();
-        vp.yMin.should.eql(pt[0].y);
-        done();
+        assert.equal(vp.yMin, pt[0].y);
     });
 
-    it('xMax should equal maximum goto x position', done => {
+    it('xMax should equal maximum goto x position', () => {
         var pen = _factory.create({});
         var pt = [
             { x: 15.00, y: 25 },
@@ -317,11 +282,10 @@ describe('module factory smoke test', () => {
             pen.goto({ x: p.x, y: p.y });
         }
         var vp = pen.viewPort();
-        vp.xMax.should.eql(pt[0].x);
-        done();
+        assert.equal(vp.xMax, pt[0].x);
     });
 
-    it('yMax should equal maximum goto y position', done => {
+    it('yMax should equal maximum goto y position', () => {
         var pen = _factory.create({});
         var pt = [
             { x: 15.00, y: 25 },
@@ -335,12 +299,11 @@ describe('module factory smoke test', () => {
             pen.goto({ x: p.x, y: p.y });
         }
         var vp = pen.viewPort();
-        vp.yMax.should.eql(pt[1].y);
-        done();
+        assert.equal(vp.yMax, pt[1].y);
     });
 
-    context('chaining', done => {
-        it('up can chain', done => {
+    describe('chaining', () => {
+        it('up can chain', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             let x2 = 30, y2 = 40;
@@ -350,14 +313,12 @@ describe('module factory smoke test', () => {
                .goto({ x: x2, y: y2 })
                .up();
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
-        it('down can chain', done => {
+        it('down can chain', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             let x2 = 30, y2 = 40;
@@ -365,14 +326,12 @@ describe('module factory smoke test', () => {
                .down()
                .goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
-        it('goto can chain', done => {
+        it('goto can chain', () => {
             var pen = _factory.create({});
             let x1 = 10, y1 = 20;
             let x2 = 30, y2 = 40;
@@ -380,12 +339,10 @@ describe('module factory smoke test', () => {
                .down()
                .goto({ x: x2, y: y2 });
             let path = pen.path();
-            // console.log(path);
             let el = path[1];
-            el.op.should.eql("L");
-            el.x.should.eql(x2);
-            el.y.should.eql(y2);
-            done();
+            assert.equal(el.op, "L");
+            assert.equal(el.x, x2);
+            assert.equal(el.y, y2);
         });
     });
 });
