@@ -6,8 +6,7 @@
 
 "use strict";
 
-var request = require('supertest'),
-    should = require('should'),
+var should = require('should'),
     modulePath = "../index-factory";
 
 describe('module factory smoke test', () => {

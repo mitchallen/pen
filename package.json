@@ -18,21 +18,10 @@
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
   "dependencies": {
-    "@mitchallen/factory-base": "0.1.0"
+    "@mitchallen/factory-base": "0.1.1"
   },
   "devDependencies": {
-    "ansi-regex": ">=5.0.1",
-    "async": ">=3.2.2",
-    "grunt": ">=1.5.3",
-    "grunt-bump": "^0.8.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-shell": "^1.3.0",
-    "minimatch": ">=3.0.5",
-    "mocha": "^9.1.1",
-    "nanoid": ">=3.1.31",
-    "shelljs": ">=0.8.5",
-    "should": "^10.0.0",
-    "superagent": "^6.1.0",
-    "supertest": "^6.1.6"
+    "mocha": "^11.7.6",
+    "should": "^13.2.3"
   }
 }
