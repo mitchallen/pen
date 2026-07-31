@@ -6,11 +6,11 @@ pen object that returns drawing path information
 
 <p align="left">
   
-  <a href="https://npmjs.org/package/@mitchallen/pen">
-    <img src="http://img.shields.io/npm/v/@mitchallen/pen.svg?style=flat-square" alt="Version">
+  <a href="https://github.com/mitchallen/pen/pkgs/npm/pen">
+    <img src="https://img.shields.io/badge/GitHub%20Packages-0.3.0-blue" alt="Version">
   </a>
-  
-  <a href="https://npmjs.org/package/@mitchallen/pen">
+
+  <a href="https://github.com/mitchallen/pen/blob/main/LICENSE">
 	<img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
   
@@ -19,11 +19,29 @@ pen object that returns drawing path information
 * * *
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+As of __0.3.0__ this package is published to __GitHub Packages__, not the public npm
+registry. Versions __0.2.6 and earlier__ remain on npmjs.org and are no longer updated
+there.
+
+Requires __Node.js 18__ or higher.
+
+Add an `.npmrc` next to your `package.json`:
+
+    @mitchallen:registry=https://npm.pkg.github.com
+
+GitHub Packages requires authentication even for public packages, so you also need a
+personal access token with the `read:packages` scope. Keep it in an environment
+variable rather than committing it:
+
+    //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+
+Then:
 
     $ npm init
-    $ npm install @mitchallen/pen --save
-  
+    $ npm install @mitchallen/pen
+
+This package has __no dependencies__.
+
 * * *
 
 ## Usage
@@ -174,7 +192,6 @@ To test, go to the root folder and type (sans __$__):
  
 ## Repo(s)
 
-* [bitbucket.org/mitchallen/pen.git](https://bitbucket.org/mitchallen/pen.git)
 * [github.com/mitchallen/pen.git](https://github.com/mitchallen/pen.git)
 
 * * *
@@ -188,15 +205,24 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
-#### Versoin 0.2.6
+#### Version 0.3.0
+
+* now published to __GitHub Packages__ instead of npmjs.org (see Installation)
+* removed the unused __@mitchallen/factory-base__ dependency -- this package now has none
+* replaced the __.npmignore__ blocklist with a __files__ allowlist
+* added an __engines__ field (Node.js 18+)
+* replaced mocha and should with the built-in __node:test__ runner
+* removed the Grunt toolchain
+
+#### Version 0.2.6
 
 * README and LICENSE year update
 
-#### Versoin 0.2.5
+#### Version 0.2.5
 
 * up, down and goto now support chaining
 
-#### Versoin 0.2.4
+#### Version 0.2.4
 
 * fill can now handle 0x000000
 

@@ -1,19 +1,28 @@
 {
   "name": "@mitchallen/pen",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "pen object that returns drawing path information",
   "main": "index-factory.js",
+  "files": [
+    "index-factory.js"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "start": "node index.js",
     "test": "node --test"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitchallen/pen.git"
+    "url": "git+https://github.com/mitchallen/pen.git"
+  },
+  "homepage": "https://github.com/mitchallen/pen#readme",
+  "bugs": {
+    "url": "https://github.com/mitchallen/pen/issues"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
-  "license": "MIT",
-  "dependencies": {
-    "@mitchallen/factory-base": "0.1.1"
-  }
+  "license": "MIT"
 }
