@@ -345,4 +345,31 @@ describe('module factory smoke test', () => {
             assert.equal(el.y, y2);
         });
     });
+    describe('guards and accessors', () => {
+
+        it('package method should return the package name', () => {
+            let pen = _factory.create({});
+            assert.equal(pen.package(), "@mitchallen/pen");
+        });
+
+        it('isDown should track down and up', () => {
+            let pen = _factory.create({});
+            assert.equal(pen.isDown(), false);
+            assert.equal(pen.down().isDown(), true);
+            assert.equal(pen.up().isDown(), false);
+        });
+
+        it('goto with no point should not add to the path', () => {
+            let pen = _factory.create({});
+            assert.equal(pen.goto(), pen);
+            assert.equal(pen.path().length, 0);
+        });
+
+        it('goto with a null coordinate should not add to the path', () => {
+            let pen = _factory.create({});
+            pen.goto({ x: null, y: 5 });
+            pen.goto({ x: 5, y: null });
+            assert.equal(pen.path().length, 0);
+        });
+    });
 });

@@ -5,15 +5,18 @@ pen object that returns drawing path information
 --
 
 <p align="left">
-  
+  <a href="https://github.com/mitchallen/pen/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/mitchallen/pen/ci.yml?branch=main" alt="CI">
+  </a>
+  <a href="https://github.com/mitchallen/pen/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
+  </a>
   <a href="https://github.com/mitchallen/pen/pkgs/npm/pen">
-    <img src="https://img.shields.io/badge/GitHub%20Packages-0.3.0-blue" alt="Version">
+    <img src="https://img.shields.io/github/package-json/v/mitchallen/pen?label=GitHub%20Packages" alt="Version">
   </a>
-
   <a href="https://github.com/mitchallen/pen/blob/main/LICENSE">
-	<img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+    <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
-  
 </p>
 
 * * *
