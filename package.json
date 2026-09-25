@@ -10,7 +10,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude='test/**'"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

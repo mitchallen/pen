@@ -30,6 +30,11 @@ jobs:
 
       - run: npm test
 
+      # Coverage gate: fails unless coverage is 100%. Run once, on the newest
+      # Node in the matrix (the coverage tooling needs a recent Node).
+      - if: matrix.node == '24'
+        run: npm run coverage
+
   publish:
     name: Publish to GitHub Packages
     needs: [test]
