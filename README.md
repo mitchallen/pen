@@ -1,9 +1,10 @@
 > **This repository is archived, and `@mitchallen/pen` is frozen at 0.3.1.**
 > That version stays installable from GitHub Packages for existing users, but
-> there will be no further releases. The code continues as
-> `@mitchallen/pen-v2`, an internal package of the
-> [drawing-kit](https://github.com/mitchallen/drawing-kit) monorepo
-> ([`packages/pen`](https://github.com/mitchallen/drawing-kit/tree/main/packages/pen)).
+> there will be no further releases. Its successor is
+> [`@mitchallen/pen-v2`](https://github.com/mitchallen/drawing-kit/tree/main/packages/pen#readme),
+> published from the [drawing-kit](https://github.com/mitchallen/drawing-kit)
+> monorepo (first release 0.3.2). Install that instead:
+> `npm install @mitchallen/pen-v2`.
 
 @mitchallen/pen
 ==
